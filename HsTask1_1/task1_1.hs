@@ -3,4 +3,5 @@
 -- а за ними – парні.
 
 reorderOddsEvens :: [Int] -> [Int]
-reorderOddsEvens elems = [oth_elem | oth_elem <- elems, odd oth_elem] ++ [oth_elem | oth_elem <- elems, even oth_elem]
+reorderOddsEvens elems = [oth_elem | oth_elem <- elems, odd oth_elem] 
+                      ++ [oth_elem | oth_elem <- elems, even oth_elem]

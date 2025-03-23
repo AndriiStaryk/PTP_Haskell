@@ -3,9 +3,9 @@
 
 _somesort :: Ord t => [t] -> [t]
 _somesort [] = []
-_somesort (elem:elems) = _somesort [oth_elem | oth_elem <- elems, oth_elem < elem] 
+_somesort (elem:elems) = _somesort [oth_elem | oth_elem <- elems, oth_elem >= elem] 
                                 ++ [elem]
-                                ++ _somesort [oth_elem | oth_elem <- elems, oth_elem >= elem] 
+                                ++ _somesort [oth_elem | oth_elem <- elems, oth_elem < elem] 
 
 
 _take :: Int -> [t] -> [t]
@@ -17,6 +17,6 @@ takeNLargestFrom :: Ord t => Int -> [t] -> [t]
 
 takeNLargestFrom n elems
     | n <= 0    = [] 
-    | otherwise = reverse (_take n (reverse (_somesort elems)))
+    | otherwise = _take n (_somesort elems)
 
 
